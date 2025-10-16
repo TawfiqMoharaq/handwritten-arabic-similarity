@@ -1,6 +1,6 @@
 # Search for Similarity in Handwritten Arabic Letters 🖋️
 
-This repository contains my official solution for **KAUST Academy — Question 2**.  
+This repository contains my official solution for **KAUST Academy Exam — Question 2**.  
 The task focuses on building an **image search system** to find the top 5 most similar Arabic handwritten characters using **EfficientNet-B3** and **cosine similarity**.
 
 ---
