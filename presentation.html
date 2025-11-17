@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonian: The Future of AI-Native Software Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            color: #1a202c;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            width: 90vw;
+            max-width: 1200px;
+            height: 85vh;
+            max-height: 675px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 60px 80px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Title Slide */
+        .slide.title-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .slide.title-slide h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide.title-slide .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .slide.title-slide .team-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .slide.title-slide .team-info strong {
+            font-weight: 600;
+        }
+
+        /* Regular Slides */
+        .slide h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #667eea;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .slide h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .slide h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #2d3748;
+        }
+
+        .slide p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #4a5568;
+        }
+
+        .slide ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .slide ul li {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #4a5568;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .slide ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Problem Slide - Special styling */
+        .problem-list li::before {
+            content: '✗';
+            color: #e53e3e;
+        }
+
+        /* Objectives Slide - Special styling */
+        .objectives-list li::before {
+            content: '✓';
+            color: #48bb78;
+        }
+
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        /* Two Column Layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            color: #667eea;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: #667eea;
+            color: white;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #667eea;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Scope Grid */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .scope-box {
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .scope-box.in-scope {
+            background: #f0fff4;
+            border-color: #48bb78;
+        }
+
+        .scope-box.out-scope {
+            background: #fff5f5;
+            border-color: #e53e3e;
+        }
+
+        .scope-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .scope-box.in-scope h3 {
+            color: #22543d;
+        }
+
+        .scope-box.out-scope h3 {
+            color: #742a2a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px;
+            }
+
+            .slide h2 {
+                font-size: 2rem;
+            }
+
+            .slide p, .slide ul li {
+                font-size: 1rem;
+            }
+
+            .two-columns, .scope-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide title-slide active">
+            <h1>Bonian</h1>
+            <div class="subtitle">The Future of AI-Native Software Development</div>
+            <p style="font-size: 1.3rem; margin-bottom: 40px;">An IDE that turns UML diagrams into real, structured code</p>
+            <div class="team-info">
+                <p><strong>Team Members:</strong> Mohammed Mahjari, Ali Tawhari, Hatem Shwaiy,<br>Saud Ghazwani, Haitham Torabi, Tawfiq Moharaq</p>
+                <p style="margin-top: 20px;"><strong>Supervisor:</strong> Dr. Mshabab Alrizah</p>
+                <p style="margin-top: 10px;">Jazan University – College of Computer Science</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Introduction -->
+        <div class="slide">
+            <h2>Introduction</h2>
+            <ul>
+                <li>Software development is changing fast with the rise of AI-powered coding tools.</li>
+                <li>While tools like GitHub Copilot and Cursor help developers write code faster, they rely heavily on natural language prompts, which can be ambiguous and error-prone.</li>
+                <li>Bonian aims to fix this by introducing a clear, structured, and visual way to generate software using UML diagrams.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: The Problem -->
+        <div class="slide">
+            <h2>The Problem</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px;">Most AI code assistants focus on speed, not architecture.</p>
+            <p>They often forget earlier design decisions — a problem we call the <strong>Architectural Deficit</strong>.</p>
+            <p style="margin-top: 30px; margin-bottom: 20px;">This leads to:</p>
+            <ul class="problem-list">
+                <li>Inconsistent code</li>
+                <li>Security flaws</li>
+                <li>Technical debt and poor maintainability</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 40px;">
+                We believe the issue isn't the AI model itself — it's the input method.
+            </div>
+        </div>
+
+        <!-- Slide 4: Our Vision -->
+        <div class="slide">
+            <h2>Our Vision</h2>
+            <ul>
+                <li>Bonian redefines how developers interact with AI.</li>
+                <li>Instead of typing prompts, developers design UML diagrams — and Bonian transforms them into executable code.</li>
+                <li>This approach combines AI speed with engineering discipline.</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 50px;">
+                From prompt engineering to software architecture — that's Bonian.
+            </div>
+        </div>
+
+        <!-- Slide 5: Objectives -->
+        <div class="slide">
+            <h2>Objectives</h2>
+            <ul class="objectives-list">
+                <li>Build an AI-native IDE that converts UML diagrams to code.</li>
+                <li>Replace ambiguous text input with formal, visual modeling.</li>
+                <li>Ensure architectural consistency in generated code.</li>
+                <li>Improve developer productivity and code quality.</li>
+                <li>Shift the developer's role from "prompt user" to system architect.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 6: Project Scope -->
+        <div class="slide">
+            <h2>Project Scope</h2>
+            <div class="scope-grid">
+                <div class="scope-box in-scope">
+                    <h3>✓ In Scope</h3>
+                    <ul style="margin-left: 0;">
+                        <li>Desktop IDE (Windows, macOS, Linux)</li>
+                        <li>UML input → TypeScript output</li>
+                        <li>Real-time AI interpretation of diagrams</li>
+                    </ul>
+                </div>
+                <div class="scope-box out-scope">
+                    <h3>✗ Out of Scope</h3>
+                    <ul style="margin-left: 0;">
+                        <li>Hand-drawn sketches</li>
+                        <li>Reverse engineering (code → UML)</li>
+                        <li>Multiple AI model integrations (Phase 2)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Key Limitations -->
+        <div class="slide">
+            <h2>Key Limitations</h2>
+            <ul>
+                <li>Dependent on the accuracy of multimodal AI models.</li>
+                <li>May misread complex or non-standard UML diagrams.</li>
+                <li>Forking VS Code creates a maintenance burden but allows deep customization.</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 50px;">
+                Despite these challenges, Bonian opens the door to new innovation beyond standard extensions.
+            </div>
+        </div>
+
+        <!-- Slide 8: Literature Review -->
+        <div class="slide">
+            <h2>Literature Review</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Approach</th>
+                        <th>Limitation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cursor</strong></td>
+                        <td>Conversational AI in IDE</td>
+                        <td>Text-based only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Copilot</strong></td>
+                        <td>Code suggestion using GPT</td>
+                        <td>No architecture awareness</td>
+                    </tr>
+                    <tr>
+                        <td><strong>UML Generators</strong></td>
+                        <td>Rule-based</td>
+                        <td>No AI reasoning</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bonian</strong></td>
+                        <td>Vision + UML + AI</td>
+                        <td>Architecture-first design</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 30px; text-align: center; font-size: 1.3rem; font-weight: 600; color: #667eea;">
+                Bonian bridges the gap between formal modeling and AI reasoning.
+            </p>
+        </div>
+
+        <!-- Slide 9: Methodology -->
+        <div class="slide">
+            <h2>Methodology</h2>
+            <div style="margin-top: 20px;">
+                <p><strong style="color: #667eea; font-size: 1.3rem;">Process Model:</strong> Agile + Research-based</p>
+                <p style="margin-top: 20px;"><strong style="color: #667eea; font-size: 1.3rem;">Technologies:</strong> VS Code OSS, UML, TypeScript, GPT-4V or Claude 3</p>
+                <p style="margin-top: 30px; margin-bottom: 20px;"><strong style="color: #667eea; font-size: 1.3rem;">Development Phases:</strong></p>
+                <ul>
+                    <li>Research & Design</li>
+                    <li>AI Model Integration</li>
+                    <li>System Implementation</li>
+                    <li>Testing & Evaluation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 10: System Design -->
+        <div class="slide">
+            <h2>System Design</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 40px;">Bonian includes three main components:</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 30px;">
+                <div style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 30px; border-radius: 12px; text-align: center;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">AI Engine</h3>
+                    <p style="font-size: 1.1rem;">Interprets UML diagrams</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 30px; border-radius: 12px; text-align: center;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Code Generator</h3>
+                    <p style="font-size: 1.1rem;">Produces executable code</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 30px; border-radius: 12px; text-align: center;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">IDE Interface</h3>
+                    <p style="font-size: 1.1rem;">Enables interaction and visualization</p>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 50px;">
+                It combines the precision of UML with the intelligence of AI.
+            </div>
+        </div>
+
+        <!-- Slide 11: Project Plan -->
+        <div class="slide">
+            <h2>Project Plan</h2>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 30px;">
+                <div style="background: #f7fafc; padding: 25px; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">Phase 1</h3>
+                    <p>Research & Literature Review</p>
+                </div>
+                <div style="background: #f7fafc; padding: 25px; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">Phase 2</h3>
+                    <p>Requirements & Planning</p>
+                </div>
+                <div style="background: #f7fafc; padding: 25px; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">Phase 3</h3>
+                    <p>System Design & Implementation</p>
+                </div>
+                <div style="background: #f7fafc; padding: 25px; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">Phase 4</h3>
+                    <p>Testing & Final Report</p>
+                </div>
+            </div>
+            <p style="margin-top: 40px; text-align: center; font-style: italic; color: #718096;">
+                (You can show your Gantt chart or WBS diagram here.)
+            </p>
+        </div>
+
+        <!-- Slide 12: Conclusion -->
+        <div class="slide">
+            <h2>Conclusion</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 40px;">Bonian is more than a tool — it's a new paradigm for AI-assisted development.</p>
+            <p style="margin-bottom: 20px; font-size: 1.3rem; font-weight: 600; color: #667eea;">It aims to:</p>
+            <ul style="margin-bottom: 50px;">
+                <li>Strengthen software architecture</li>
+                <li>Reduce technical debt</li>
+                <li>Empower developers with design-first thinking</li>
+            </ul>
+            <div class="highlight-box" style="font-size: 1.5rem; text-align: center;">
+                "From prompt engineering to software architecture — that's Bonian."
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">12</span>
+        </div>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById('progressBar');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        totalSlidesSpan.textContent = totalSlides;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+
+            currentSlideSpan.textContent = index + 1;
+            progressBar.style.width = ((index + 1) / totalSlides * 100) + '%';
+
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex < 0) currentSlideIndex = 0;
+            if (currentSlideIndex >= totalSlides) currentSlideIndex = totalSlides - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentSlideIndex < totalSlides - 1) {
+                    changeSlide(1);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentSlideIndex > 0) {
+                    changeSlide(-1);
+                }
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
