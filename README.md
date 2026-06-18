@@ -1,11 +1,11 @@
-# Search for Similarity in Handwritten Arabic Letters 🖋️
+# Search for Similarity in Handwritten Arabic Letters 
 
 This repository contains my official solution for **KAUST Academy Exam — Question 2**.  
 The task focuses on building an **image search system** to find the top 5 most similar Arabic handwritten characters using **EfficientNet-B3** and **cosine similarity**.
 
 ---
 
-## 🧩 Task Summary
+## Task Summary
 > Given a handwritten Arabic character (e.g., "ب"), find the 5 most similar images from a dataset of handwritten Arabic characters.
 
 ### Steps:
@@ -18,7 +18,7 @@ The task focuses on building an **image search system** to find the top 5 most s
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 - Python
 - PyTorch & Torchvision
 - Scikit-learn
@@ -28,7 +28,7 @@ The task focuses on building an **image search system** to find the top 5 most s
 
 ---
 
-## 📊 Dataset
+## Dataset
 - [mohammad2012191/arabic-chars](https://www.kaggle.com/datasets/mohammad2012191/arabic-chars)
 - [mohammad2012191/character](https://www.kaggle.com/datasets/mohammad2012191/character)
 
